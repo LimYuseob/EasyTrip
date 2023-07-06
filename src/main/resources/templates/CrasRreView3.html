@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+<title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Alex+Brush"
+	rel="stylesheet">
+
+<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.css">
+
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+
+<link rel="stylesheet" href="css/aos.css">
+
+<link rel="stylesheet" href="css/ionicons.min.css">
+
+<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="css/jquery.timepicker.css">
+
+
+<link rel="stylesheet" href="css/flaticon.css">
+<link rel="stylesheet" href="css/icomoon.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<nav
+		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+		id="ftco-navbar">
+		<div class="container">
+            <a class="active" href="/">
+                <img src="../images/indexlogo.png" width="200" height="50" style="margin-top: 50px; margin-bottom: 10px" >
+            </a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#ftco-nav" aria-controls="ftco-nav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/flight" class="nav-link">Flight</a></li>
+                    <li class="nav-item"><a href="/hotels" class="nav-link">Hotels</a></li>
+                    <li class="nav-item"><a href="/cars" class="nav-link">Cars</a></li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item"><a href="/member/myPage" class="nav-link">MyPage</a></li>
+                    <li sec:authorize="isAnonymous()" class="nav-item cta"><a href="/member/loginPage" class="nav-link"><span>Login</span></a></li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item cta"><a href="/member/logout" class="nav-link"><span>Logout</span></a></li>
+                </ul>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- END nav -->
+
+	<div class="hero-wrap js-fullheight"
+		style="background-image: url('images/bg_3.jpg');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+				data-scrollax-parent="true">
+				<div class="col-md-9 ftco-animate text-center"
+					data-scrollax=" properties: { translateY: '70%' }">
+					<p class="breadcrumbs"
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+						<span class="mr-2"><a href="index.html">Home</a></span> <span>Tour</span>
+					</p>
+					<h1 class="mb-3 bread"
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Destination</h1>
+					<form onsubmit="searsh1(event)" id="search_form">
+						<input id="autocomplete-input" type="text"
+							name="autocomplete-input" placeholder="Start typing..">
+						<div id="autocomplete-results"></div>
+
+						<div id="suggestion_box"></div>
+					</form>
+					<form onsubmit="searsh()">
+						<div class="sb-u-width-auto@l LPCM_c734a667 LPCM_3d65ffdd">
+							<div
+								class="LPCM_b770f0b1 LPCM_4dc8c133 LPCM_99c5c3a0 LPCM_04f501d3 LPCM_4049aff0">
+								<div
+									class="pickup-date-time sbc-u-position-relative sb-u-width-auto@l LPCM_c734a667 LPCM_3d65ffdd">
+									<div
+										class="LPCM_b770f0b1 LPCM_4dc8c133 LPCM_99c5c3a0 LPCM_04f501d3 LPCM_4049aff0">
+										<div></div>
+										<div class="sb-u-width-auto@l LPCM_c734a667 LPCM_a501d16e">
+											<div>
+												<div class="bgui-u-di" data-testid="date-picker-container"
+													role="none">
+													<div>
+														<button id="searchbox-toolbox-date-picker-pickup-date"
+															style="height: 64px"
+															data-testid="searchbox-toolbox-date-picker-pickup-date"
+															type="button" value="5월 7일 (일)" class="sbc-fl-button">
+															<div
+																class="LPCM_b770f0b1 LPCM_99c5c3a0 LPCM_341e7db9 sbc-fl-button__stack">
+																<div class="sbc-fl-button__start-slot"></div>
+																<div class="">
+																	<div
+																		class="LPCM_b770f0b1 LPCM_d0339201 LPCM_4547992c LPCM_ada16625 sbc-fl-button__stack-inner">
+																		<form>
+																			<label for="birthday">픽업일:</label> <input type="date"
+																				id="PickupDate" name="PickupDate">
+																		</form>
+																	</div>
+																</div>
+															</div>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="sb-u-width-auto@l LPCM_c734a667 LPCM_6dc2f25d">
+											<div id="timepicker-container-pickup-time"
+												class="sbc-fl-timepicker bui-f-font-emphasized_1"
+												style="height: 64px">
+												<div
+													class="LPCM_6839f7e5 LPCM_7dbdfec2 sbc-fl-timepicker__root">
+													<div class="LPCM_99e8eff9 LPCM_e8783b85 LPCM_47f0d2e0">
+														<span
+															class="LPCM_cc0ee90b LPCM_00ef3cff LPCM_2bd837b3 LPCM_32e58875"
+															aria-hidden="true"> <span
+															class="LPCM_cc0ee90b LPCM_2bd837b3" aria-hidden="true">
+														</span>
+														</span> <select class="LPCM_ca2d2549 sbc-fl-timepicker__input"
+															name="pickup-time"
+															data-testid="searchbox-toolbox-pickup-time"
+															aria-label="대여시간" id="searchbox-toolbox-pickup-time">
+															<option value="00:00">오전 12:00</option>
+															<option value="00:30">오전 12:30</option>
+															<option value="01:00">오전 01:00</option>
+															<option value="01:30">오전 01:30</option>
+															<option value="02:00">오전 02:00</option>
+															<option value="02:30">오전 02:30</option>
+															<option value="03:00">오전 03:00</option>
+															<option value="03:30">오전 03:30</option>
+															<option value="04:00">오전 04:00</option>
+															<option value="04:30">오전 04:30</option>
+															<option value="05:00">오전 05:00</option>
+															<option value="05:30">오전 05:30</option>
+															<option value="06:00">오전 06:00</option>
+															<option value="06:30">오전 06:30</option>
+															<option value="07:00">오전 07:00</option>
+															<option value="07:30">오전 07:30</option>
+															<option value="08:00">오전 08:00</option>
+															<option value="08:30">오전 08:30</option>
+															<option value="09:00">오전 09:00</option>
+															<option value="09:30">오전 09:30</option>
+															<option value="10:00" selected="">오전 10:00</option>
+															<option value="10:30">오전 10:30</option>
+															<option value="11:00">오전 11:00</option>
+															<option value="11:30">오전 11:30</option>
+															<option value="12:00">오후 12:00</option>
+															<option value="12:30">오후 12:30</option>
+															<option value="13:00">오후 01:00</option>
+															<option value="13:30">오후 01:30</option>
+															<option value="14:00">오후 02:00</option>
+															<option value="14:30">오후 02:30</option>
+															<option value="15:00">오후 03:00</option>
+															<option value="15:30">오후 03:30</option>
+															<option value="16:00">오후 04:00</option>
+															<option value="16:30">오후 04:30</option>
+															<option value="17:00">오후 05:00</option>
+															<option value="17:30">오후 05:30</option>
+															<option value="18:00">오후 06:00</option>
+															<option value="18:30">오후 06:30</option>
+															<option value="19:00">오후 07:00</option>
+															<option value="19:30">오후 07:30</option>
+															<option value="20:00">오후 08:00</option>
+															<option value="20:30">오후 08:30</option>
+															<option value="21:00">오후 09:00</option>
+															<option value="21:30">오후 09:30</option>
+															<option value="22:00">오후 10:00</option>
+															<option value="22:30">오후 10:30</option>
+															<option value="23:00">오후 11:00</option>
+															<option value="23:30">오후 11:30</option>
+														</select> <span class="LPCM_c51e5b87"> </span> </span>
+													</div>
+												</div>
+												<label aria-hidden="true"
+													for="searchbox-toolbox-pickup-time"
+													class="LPCM_ff31c0fa LPCM_37547395 sbc-fl-timepicker__label">시간</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="sb-u-width-auto@l LPCM_c734a667 LPCM_3d65ffdd">
+									<div
+										class="LPCM_b770f0b1 LPCM_4dc8c133 LPCM_99c5c3a0 LPCM_04f501d3 LPCM_4049aff0 dropoff-date-time sb-u-width-auto@l">
+										<div class="sb-u-width-auto@l LPCM_c734a667 LPCM_a501d16e">
+											<div class="bgui-u-di" data-testid="date-picker-container"
+												role="none">
+												<div>
+													<button id="searchbox-toolbox-date-picker-dropoff-date"
+														style="height: 64px"
+														data-testid="searchbox-toolbox-date-picker-dropoff-date"
+														type="button" value="5월 10일 (수)" class="sbc-fl-button">
+														<div
+															class="LPCM_b770f0b1 LPCM_99c5c3a0 LPCM_341e7db9 sbc-fl-button__stack">
+															<div class="sbc-fl-button__start-slot"></div>
+															<div class="">
+																<div
+																	class="LPCM_b770f0b1 LPCM_d0339201 LPCM_4547992c LPCM_ada16625 sbc-fl-button__stack-inner">
+																	<form>
+																		<label for="birthday">반납일:</label> <input type="date"
+																			id="ReturnDate" name="ReturnDate">
+																	</form>
+
+																</div>
+															</div>
+														</div>
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="sb-u-width-auto@l LPCM_c734a667 LPCM_6dc2f25d">
+											<div id="timepicker-container-dropoff-time"
+												class="sbc-fl-timepicker bui-f-font-emphasized_1"
+												style="height: 64px">
+												<div
+													class="LPCM_6839f7e5 LPCM_7dbdfec2 sbc-fl-timepicker__root">
+													<div class="LPCM_99e8eff9 LPCM_e8783b85 LPCM_47f0d2e0">
+														<span
+															class="LPCM_cc0ee90b LPCM_00ef3cff LPCM_2bd837b3 LPCM_32e58875"
+															aria-hidden="true"> <span
+															class="LPCM_cc0ee90b LPCM_2bd837b3" aria-hidden="true">
+														</span>
+														</span> <select class="LPCM_ca2d2549 sbc-fl-timepicker__input"
+															name="dropoff-time"
+															data-testid="searchbox-toolbox-dropoff-time"
+															aria-label="반납시간" id="searchbox-toolbox-dropoff-time">
+															<option value="00:00">오전 12:00</option>
+															<option value="00:30">오전 12:30</option>
+															<option value="01:00">오전 01:00</option>
+															<option value="01:30">오전 01:30</option>
+															<option value="02:00">오전 02:00</option>
+															<option value="02:30">오전 02:30</option>
+															<option value="03:00">오전 03:00</option>
+															<option value="03:30">오전 03:30</option>
+															<option value="04:00">오전 04:00</option>
+															<option value="04:30">오전 04:30</option>
+															<option value="05:00">오전 05:00</option>
+															<option value="05:30">오전 05:30</option>
+															<option value="06:00">오전 06:00</option>
+															<option value="06:30">오전 06:30</option>
+															<option value="07:00">오전 07:00</option>
+															<option value="07:30">오전 07:30</option>
+															<option value="08:00">오전 08:00</option>
+															<option value="08:30">오전 08:30</option>
+															<option value="09:00">오전 09:00</option>
+															<option value="09:30">오전 09:30</option>
+															<option value="10:00" selected="">오전 10:00</option>
+															<option value="10:30">오전 10:30</option>
+															<option value="11:00">오전 11:00</option>
+															<option value="11:30">오전 11:30</option>
+															<option value="12:00">오후 12:00</option>
+															<option value="12:30">오후 12:30</option>
+															<option value="13:00">오후 01:00</option>
+															<option value="13:30">오후 01:30</option>
+															<option value="14:00">오후 02:00</option>
+															<option value="14:30">오후 02:30</option>
+															<option value="15:00">오후 03:00</option>
+															<option value="15:30">오후 03:30</option>
+															<option value="16:00">오후 04:00</option>
+															<option value="16:30">오후 04:30</option>
+															<option value="17:00">오후 05:00</option>
+															<option value="17:30">오후 05:30</option>
+															<option value="18:00">오후 06:00</option>
+															<option value="18:30">오후 06:30</option>
+															<option value="19:00">오후 07:00</option>
+															<option value="19:30">오후 07:30</option>
+															<option value="20:00">오후 08:00</option>
+															<option value="20:30">오후 08:30</option>
+															<option value="21:00">오후 09:00</option>
+															<option value="21:30">오후 09:30</option>
+															<option value="22:00">오후 10:00</option>
+															<option value="22:30">오후 10:30</option>
+															<option value="23:00">오후 11:00</option>
+															<option value="23:30">오후 11:30</option>
+														</select> <span class="LPCM_c51e5b87"> <span
+															class="LPCM_cc0ee90b LPCM_8b2a5c2a LPCM_93d18bde LPCM_32e58875"
+															aria-hidden="true"> </span>
+														</span>
+													</div>
+												</div>
+												<label aria-hidden="true"
+													for="searchbox-toolbox-dropoff-time"
+													class="LPCM_ff31c0fa LPCM_37547395 sbc-fl-timepicker__label">시간</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="submit-button-container">
+									<button data-testid="searchbox-toolbox-submit-button"
+										style="height: 64px" type="submit"
+										class="LPCM_c9e10079 LPCM_1690799f LPCM_c4a63008 LPCM_2f09f6d9 LPCM_44f154f8 LPCM_d3077f39 submit-button">
+										<span class="LPCM_200e03e8"> </span>검색
+									</button>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div id="ccc">ddd</div>
+	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+
+
+	<section class="ftco-section ftco-degree-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 sidebar ftco-animate">
+					<div class="sidebar-wrap bg-light ftco-animate">
+						<h3 class="heading mb-4">Find City</h3>
+						<form action="#">
+							<div class="fields">
+								<div class="form-group">
+									<input type="text" class="form-control"
+										placeholder="Destination, City">
+								</div>
+								<div class="form-group">
+									<div class="select-wrap one-third">
+										<div class="icon">
+											<span class="ion-ios-arrow-down"></span>
+										</div>
+										<select name="" id="" class="form-control"
+											placeholder="Keyword search">
+											<option value="">Select Location</option>
+											<option value="">San Francisco USA</option>
+											<option value="">Berlin Germany</option>
+											<option value="">Lodon United Kingdom</option>
+											<option value="">Paris Italy</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="text" id="checkin_date" class="form-control"
+										placeholder="Date from">
+								</div>
+								<div class="form-group">
+									<input type="text" id="checkin_date" class="form-control"
+										placeholder="Date to">
+								</div>
+								<div class="form-group">
+									<div class="range-slider">
+										<span> <input type="number" value="25000" min="0"
+											max="120000" /> - <input type="number" value="50000" min="0"
+											max="120000" />
+										</span> <input value="1000" min="0" max="120000" step="500"
+											type="range" /> <input value="50000" min="0" max="120000"
+											step="500" type="range" />
+										</svg>
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="submit" value="Search"
+										class="btn btn-primary py-3 px-5">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="sidebar-wrap bg-light ftco-animate">
+						<h3 class="heading mb-4">Star Rating</h3>
+						<form method="post" class="star-rating">
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input"
+									id="exampleCheck1"> <label class="form-check-label"
+									for="exampleCheck1">
+									<p class="rate">
+										<span><i class="icon-star"></i><i class="icon-star"></i><i
+											class="icon-star"></i><i class="icon-star"></i><i
+											class="icon-star"></i></span>
+									</p>
+								</label>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input"
+									id="exampleCheck1"> <label class="form-check-label"
+									for="exampleCheck1">
+									<p class="rate">
+										<span><i class="icon-star"></i><i class="icon-star"></i><i
+											class="icon-star"></i><i class="icon-star"></i><i
+											class="icon-star-o"></i></span>
+									</p>
+								</label>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input"
+									id="exampleCheck1"> <label class="form-check-label"
+									for="exampleCheck1">
+									<p class="rate">
+										<span><i class="icon-star"></i><i class="icon-star"></i><i
+											class="icon-star"></i><i class="icon-star-o"></i><i
+											class="icon-star-o"></i></span>
+									</p>
+								</label>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input"
+									id="exampleCheck1"> <label class="form-check-label"
+									for="exampleCheck1">
+									<p class="rate">
+										<span><i class="icon-star"></i><i class="icon-star"></i><i
+											class="icon-star-o"></i><i class="icon-star-o"></i><i
+											class="icon-star-o"></i></span>
+									</p>
+								</label>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input"
+									id="exampleCheck1"> <label class="form-check-label"
+									for="exampleCheck1">
+									<p class="rate">
+										<span><i class="icon-star"></i><i class="icon-star-o"></i><i
+											class="icon-star-o"></i><i class="icon-star-o"></i><i
+											class="icon-star-o"></i></span>
+									</p>
+								</label>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-lg-9">
+
+					<!--  여기가  -->
+					<div class="row" id="row1"></div>
+					<div class="row mt-5">
+						<div class="col text-center">
+							<div class="block-27">
+								<button onclick="changePage(-1)">Previous</button>
+								<div id="buttonContainer"></div>
+								<button onclick="changePage(1)">Next</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- .col-md-8 -->
+			</div>
+		</div>
+	</section>
+	<!-- .section -->
+
+	<footer class="ftco-footer ftco-bg-dark ftco-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">dirEngine</h2>
+						<p>Far far away, behind the word mountains, far from the
+							countries Vokalia and Consonantia, there live the blind texts.</p>
+						<ul
+							class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+							<li class="ftco-animate"><a href="#"><span
+									class="icon-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="icon-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span
+									class="icon-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4 ml-md-5">
+						<h2 class="ftco-heading-2">Information</h2>
+						<ul class="list-unstyled">
+							<li><a href="#" class="py-2 d-block">About</a></li>
+							<li><a href="#" class="py-2 d-block">Service</a></li>
+							<li><a href="#" class="py-2 d-block">Terms and
+									Conditions</a></li>
+							<li><a href="#" class="py-2 d-block">Become a partner</a></li>
+							<li><a href="#" class="py-2 d-block">Best Price
+									Guarantee</a></li>
+							<li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Customer Support</h2>
+						<ul class="list-unstyled">
+							<li><a href="#" class="py-2 d-block">FAQ</a></li>
+							<li><a href="#" class="py-2 d-block">Payment Option</a></li>
+							<li><a href="#" class="py-2 d-block">Booking Tips</a></li>
+							<li><a href="#" class="py-2 d-block">How it works</a></li>
+							<li><a href="#" class="py-2 d-block">Contact Us</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><span class="icon icon-map-marker"></span><span
+									class="text">203 Fake St. Mountain View, San Francisco,
+										California, USA</span></li>
+								<li><a href="#"><span class="icon icon-phone"></span><span
+										class="text">+2 392 3929 210</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span
+										class="text">info@yourdomain.com</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+
+					<p>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script>
+						All rights reserved | This template is made with <i
+							class="icon-heart" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen">
+		<svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+	</div>
+	<script>
+   //api1
+   //var response ="";
+   var pageN= "";
+   var response = "";
+   var M = new Map();
+   var params = {
+
+   
+      label: "",
+      dest_type: "",
+   
+   //api2뷰딴
+
+      ReturnTime: "",
+      PickupTime: "",
+       ReturnDate: "",
+       PickupDate: "",
+      
+      //api 2 값
+          name    : "",  
+         currency  : "KRW",
+         price        : "",
+       transmission: "",
+         image_url   : "",
+        seats    : "",    
+      v_name  : "",  
+         fuel_type  : "",
+         doors    : "",   
+         ReturnDate : "",
+           PickupDate : "",
+           pick_up_datetime : "",
+             drop_off_datetime : "",
+            user : 111
+   };
+
+   let timeout = null;
+
+   document.getElementById('autocomplete-input').addEventListener('input', function(e) {
+     clearTimeout(timeout);
+
+     timeout = setTimeout(function() {
+       let input = e.target.value;  // 사용자가 입력한 텍스트
+
+       if (input === '') return;
+
+       const settings = {
+         async: true,
+         crossDomain: true,
+         url: 'https://booking-com.p.rapidapi.com/v1/car-rental/locations?locale=ko&name=' + input,
+         method: 'GET',
+         headers: {
+           'X-RapidAPI-Key': 'a6cf12597amshb299e0630feca7ap1259b7jsn413610317de2',
+           'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+         }
+       };
+
+       $.ajax(settings).done(function(response1) {
+           let resultsContainer = document.getElementById('autocomplete-results');
+           resultsContainer.innerHTML = '';  // 결과 컨테이너 초기화
+
+           for(let i = 0; i < response1.length; i++) {
+                let resultElement = document.createElement('div');
+                resultElement.textContent = response1[i].label;
+                // 추가 정보를 data- 속성에 저장
+            resultElement.dataset.label =response1[i].label;
+                resultElement.dataset.name =response1[i].name;
+                resultElement.dataset.dropOffLatitude = response1[i].drop_off_latitude;
+                resultElement.dataset.pickUpLatitude = response1[i].pick_up_latitude;
+                resultElement.dataset.pickUpLongitude = response1[i].pick_up_longitude;
+                resultElement.dataset.dropOffLongitude = response1[i].drop_off_longitude;
+
+             // 클릭 이벤트 리스너 추가
+             resultElement.addEventListener('click', function(e) {
+               document.getElementById('autocomplete-input').value = e.target.textContent;  // 클릭한 항목의 텍스트로 입력 필드 설정
+               // data- 속성에서 추가 정보 가져오기
+          params.name = e.target.dataset.name;
+          params.label = e.target.dataset.label;
+               let dropOffLatitude = e.target.dataset.dropOffLatitude;
+               let pickUpLatitude = e.target.dataset.pickUpLatitude;
+               let pickUpLongitude = e.target.dataset.pickUpLongitude;
+               let dropOffLongitude = e.target.dataset.dropOffLongitude;
+               // 필요한 작업 수행
+               console.log(dropOffLatitude, pickUpLatitude, pickUpLongitude, dropOffLongitude);
+               resultsContainer.innerHTML = '';  // 결과 컨테이너 초기화
+             });
+
+             resultsContainer.appendChild(resultElement);
+           };
+       });
+     }, 500);  // 사용자가 입력을 중단한 후 0.5초 후에 API 요청 보냄
+   });
+   
+
+
+      //날짜 시간 뷰딴에서 받아오는 함수
+   function searsh() {
+       event.preventDefault();
+       params.ReturnTime = document.getElementById('searchbox-toolbox-dropoff-time').value;
+       params.PickupTime = document.getElementById('searchbox-toolbox-pickup-time').value;
+       
+      ReturnDate = document.getElementById('ReturnDate').value;
+       PickupDate = document.getElementById('PickupDate').value;
+       var RD=ReturnDate;
+       var PD=PickupDate;
+        var RT= params.ReturnTime.replace(":", "%3A");
+       var PT= params.PickupTime.replace(":", "%3A");
+       
+       //alert("searsh들어옴"+params.ReturnTime + "zzzzzzz" + params.PickupTime + "zzzzzzz" + ReturnDate + "zzzzzzz" + PickupDate);
+      
+       api2( RT, PT, RD, PD);
+       params.ReturnDate = ReturnDate;
+       params.PickupDate = PickupDate;
+   }
+   //기입된 날짜 시간 으로 api 보냄
+   function api2(RT, PT, RD, PD) {
+
+
+       const settings = {
+               
+           async: true,
+           crossDomain: true,
+           url: 'https://booking-com.p.rapidapi.com/v1/car-rental/search?currency=KRW&drop_off_latitude=50.08773&sort_by=recommended&drop_off_datetime=' + RD+ '%20' + RT + '%3A00&from_country=it&pick_up_latitude=50.08773&locale=en-gb&pick_up_datetime=' + PD+ '%20' + PT+ '%3A00&drop_off_longitude=14.421133&pick_up_longitude=14.421133',
+           method: 'GET',
+           headers: {
+               'X-RapidAPI-Key': 'ebc6ae28admsh3ba78bd1be6489fp1ce45fjsnfffe3d78ec16',
+               'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+           }
+       };
+
+       $.ajax(settings).done(function(response) {
+           alert("api2들어옴");
+         for(let i = 0; i<response.search_results.length;i++ ){
+  
+             let j  = JSON.stringify(response.search_results[i]);
+             let obj = JSON.parse(j);
+            M.set(i,obj);
+      
+               
+               params.pick_up_datetime = params.PickupDate +":"+params.PickupTime;
+               params.drop_off_datetime = params.ReturnDate +":"+params.ReturnTime;
+
+               
+               createList(M,i,6,params);
+
+             
+         }  
+           alert("끝");
+       });
+
+		
+   }
+
+
+   //리스트 반환 html 담은 함수
+   function createList(M,i,x,params) {
+    //  alert('<div>' + JSON.stringify(M.get(0).vehicle_info.v_name) + '</div>');
+       var html= `
+
+       <form action="/cars2" method="post">
+       <button>
+          <div class="destination">
+          
+               <div class="icon d-flex justify-content-center align-items-center">
+                   <span class="icon-search2"></span>
+               </div>
+           
+           <div class="text p-3">
+               <div class="d-flex">
+                   <div class="one">
+                       <h3><a href="hotel-single.html">${JSON.stringify(M.get(i).vehicle_info.v_name)}</a></h3>
+                       <p class="rate">
+                           <i class="icon-star"></i>
+                           <i class="icon-star"></i>
+                           <i class="icon-star"></i>
+                           <i class="icon-star"></i>
+                           <i class="icon-star-o"></i>
+                           <span>${JSON.stringify(M.get(i).vehicle_info.v_name)} Rating</span>
+                       </p>
+                   </div>
+                   <div class="two">
+                       <span class="price per-price">$${JSON.stringify(M.get(i).vehicle_info.v_name)}<br><small>/night</small></span>
+                   </div>
+               </div>
+               <p>Far far away, behind the word mountains, far from the countries</p>
+               <hr>
+               <p class="bottom-area d-flex">
+                   <span><i class="icon-map-o"></i> ${JSON.stringify(M.get(i).vehicle_info.v_name)}</span> 
+                   <span class="ml-auto"><a href="#">Book Now</a></span>
+               </p>
+           </div>
+       </div>
+       
+       <input type="hidden" id="label" name="label" value=${JSON.stringify(params.label)}>
+       <input type="hidden" id="dest_type" name="dest_type" value=${params.dest_type}></input>
+       <input type="hidden" id="drop_off_datetime" name="drop_off_datetime" value=${params.drop_off_datetime}>
+       <input type="hidden" id="pick_up_datetime" name="pick_up_datetime" value=${params.pick_up_datetime}>
+       <input type="hidden" id="name" name="name" value=${JSON.stringify(M.get(i).route_info.pickup.name)}>
+       <input type="hidden" id="price" name="price" value=${JSON.stringify(M.get(i).pricing_info.price)}>
+       <input type="hidden" id="transmission" name="transmission" value=${JSON.stringify(M.get(i).vehicle_info.transmission)}>
+       <input type="hidden" id="image_url" name="image_url" value=${JSON.stringify(M.get(i).vehicle_info.image_url)}>
+       <input type="hidden" id="seats" name="seats" value=${JSON.stringify(M.get(i).vehicle_info.seats)}>
+       <input type="hidden" id="v_name" name="v_name" value=${JSON.stringify(M.get(i).vehicle_info.v_name)}>
+       <input type="hidden" id="fuel_type" name="fuel_type" value=${JSON.stringify(M.get(i).vehicle_info.fuel_type)}>
+       <input type="hidden" id="doors" name="doors" value=${JSON.stringify(M.get(i).vehicle_info.doors)}>
+       <input type="hidden" id="currency" name="currency" value=${JSON.stringify(params.currency)}>
+       <input type="hidden" id="user" name="user" value=${params.user}>
+
+       </button>
+      </form>
+            
+            
+            
+            
+            
+            
+            
+            
+            <!--   <input id="dest_type" name="dest_type" value=${params.dest_type}>${JSON.stringify(M.get(i).dest_type)}</input>
+            
+            alert("리스트의 반납일 :" +  ${params.drop_off_datetime})
+            <input id="drop_off_datetime" name="drop_off_datetime" value=${JSON.stringify(M.get(i).drop_off_datetime)}>  ${params.drop_off_datetime}   </input>
+            <input id="pick_up_datetime" name="pick_up_datetime" value=${JSON.stringify(M.get(i).pick_up_datetime)}>   ${params.pick_up_datetime}</input>
+
+           
+            <input id="name" name="name" value=${params.name}>${JSON.stringify(M.get(i).name)}</input>
+            <input id="price" name="price" value=${params.price}>${JSON.stringify(M.get(i).price)}</input>
+            <input id="transmission" name="transmission" value=${params.transmission}>${JSON.stringify(M.get(i).transmission)}</input>
+            <input id="image_url" name="image_url" value=${params.image_url}>${JSON.stringify(M.get(i).image_url)}</input>
+            <input id="seats" name="seats" value=${params.seats}>${JSON.stringify(M.get(i).seats)}</input>
+            <input id="v_name" name="v_name" value=${params.v_name}>${JSON.stringify(M.get(i).v_name)}</input>
+            <input id="fuel_type" name="fuel_type" value=${params.fuel_type}>${JSON.stringify(M.get(i).fuel_type)}</input>
+           
+            <input id="doors" name="doors" value=${params.doors}>${JSON.stringify(M.get(i).doors)}</input>
+            <input id="currency" name="currency" value=${JSON.stringify(M.get(i).user)}>${JSON.stringify(M.get(i).currency)}</input>
+            <input id="user" name="user" value=JSON.stringify(M.get(i).user)>JSON.stringify(M.get(i).user)</input> -->  
+
+
+       `;
+       if(i<=x){
+       $('#row1').first().append(html);
+       }
+   }
+   function pageN(x){
+        for (let i = 0; i + 6*(x-1) < 6*x; i++) {
+            let result = response.search_results[i];
+         
+            params.user = i;
+            // Now you can use `result` instead of `response.search_results[0]`
+            params.name = JSON.stringify(result.route_info.pickup.name);
+            params.price = JSON.stringify(result.pricing_info.price);
+            params.transmission = JSON.stringify(result.vehicle_info.transmission);
+            params.image_url = JSON.stringify(result.vehicle_info.image_url);
+            params.seats = JSON.stringify(result.vehicle_info.seats);
+            params.v_name = JSON.stringify(result.vehicle_info.v_name);
+            params.fuel_type = JSON.stringify(result.vehicle_info.fuel_type);
+            params.doors = JSON.stringify(result.vehicle_info.doors);
+            
+            params.pick_up_datetime = params.PickupDate +"  "+params.PickupTime;
+            params.drop_off_datetime = params.ReturnDate +"  "+params.ReturnTime;
+
+           
+
+            createList(params);
+
+          
+        }
+        $('#row1').first().append(html);
+   }
+
+      
+  
+   const totalButtons = 10;
+   const buttonsPerPage = 4;
+   let currentPage = 0;
+
+   function renderButtons(page) {
+       const buttonContainer = document.getElementById('buttonContainer');
+       buttonContainer.innerHTML = '';
+       for(let i = page * buttonsPerPage; i < (page + 1) * buttonsPerPage && i < totalButtons; i++) {
+           const button = document.createElement('button');
+           button.innerText = 'Button ' + (i + 1);
+           button.onclick = () => alert('Button ' + (i + 1) + ' clicked');
+           buttonContainer.appendChild(button);
+       }
+   }
+
+   function changePage(direction) {
+       const maxPage = Math.ceil(totalButtons / buttonsPerPage) - 1;
+       if(currentPage + direction >= 0 && currentPage + direction <= maxPage) {
+           currentPage += direction;
+           renderButtons(currentPage);
+       }
+   }
+
+   renderButtons(currentPage);
+       </script>
+	<div id="hg"></div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/jquery.timepicker.min.js"></script>
+	<script src="js/scrollax.min.js"></script>
+	<script src="js/range.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="js/google-map.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+</html>

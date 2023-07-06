@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<meta charset="UTF-8">
+
+	<title>index</title>
+	<link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+		  rel="stylesheet">
+
+	<!-- Bootstrap core CSS -->
+	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+	<script src="/assets/js/bootstrap.min.js"></script>
+
+	<!-- Additional CSS Files -->
+	<link href="/assets/css/fontawesome.css" rel="stylesheet">
+	<link href="/assets/css/templatemo-cyborg-gaming.css" rel="stylesheet">
+	<link href="/assets/css/owl.css" rel="stylesheet">
+	<link href="/assets/css/animate.css" rel="stylesheet">
+	<link href="https://unpkg.com/swiper@7/swiper-bundle.min.css" rel="stylesheet"/>
+	<style>
+		.pimg {
+			display: block; /* 이미지를 블록 레벨 요소로 설정하여 가로 중앙 정렬을 할 수 있도록 합니다 */
+			margin: auto;
+			object-fit: cover;
+			width: 100%;
+		}
+
+		html.open {
+			overflow: hidden;
+		}
+
+		#menu.open {
+			left: 0px;
+		}
+
+		.page_cover.open {
+			display: block;
+		}
+
+		.btn2 {
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			z-index: 1;
+			background-image:
+					url("/assets/images/menuopen.png");
+			background-size: 50%;
+			background-repeat: no-repeat;
+			background-position: center;
+			cursor: pointer;
+		}
+
+		.close {
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			background-image:
+					url("/assets/images/menuclose.png");
+			background-size: 50%;
+			background-repeat: no-repeat;
+			background-position: center;
+			cursor: pointer;
+		}
+
+		#menu {
+			width: 150px;
+			height: 100%;
+			position: fixed;
+			top: 0px;
+			left: -202px;
+			z-index: 10;
+			border: 1px solid #c9c9c9;
+			background-color: white;
+			text-align: center;
+			font-weight: bold;
+			transition: All 0.2s ease;
+			-webkit-transition: All 0.2s ease;
+			-moz-transition: All 0.2s ease;
+			-o-transition: All 0.2s ease;
+			padding-top: 50px;
+			padding-left: 0px;
+			padding-right: 40px;
+		}
+
+		#menu a {
+			padding: 0;
+			text-decoration: none;
+			font-size: 18px;
+			color: #25a4cd;
+			display: block;
+			transition: 0.3s;
+		}
+
+		#menu.open {
+			left: -1px;
+		}
+
+		.page_cover.open {
+			display: block;
+		}
+
+		.page_cover {
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top: 0px;
+			right: 0px;
+			background-color: rgba(0, 0, 0, 0.4);
+			z-index: 4;
+			display: none;
+		}
+
+		#menu ul {
+			width: 190px;
+			margin: 0;
+			padding: 0;
+		}
+
+		#menu ul.nav li {
+			position: relative;
+			float: left;
+			width: 78.5%;
+			list-style-type: none;
+			font-size: 18px;
+		}
+
+		#menu ul.nav li a {
+			display: block;
+			width: 100%;
+			height: 100%;
+			line-height: 50px;
+			text-indent: 20px;
+			text-align: left;
+			color: #2e2eea;
+			font-weight: bold;
+			text-decoration: none;
+		}
+
+		#menu ul.nav li a:hover {
+			background: #2E2EFE;
+			color: white;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".btn2").click(function() {
+				$("#menu,.page_cover,html").addClass("open");
+				window.location.hash = "#open";
+			})
+		})
+
+		window.onhashchange = function() {
+			if (location.hash != "#open") {
+				$("#menu,.page_cover,html").removeClass("open");
+			}
+		};
+
+		$(document).ready(function() {
+			$("#menu ul.sub_mobile").hide();
+			$("#menu ul.nav li").click(function() {
+				$("ul", this).slideToggle("fast");
+			})
+		})
+	</script>
+</head>
+<body>
+
+<header class="header-area header-sticky">
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-12">
+				<a class="active" href="/" style="margin-bottom: 15px">
+					<img src="../images/logo.jpg" width="200" height="50" style="margin-top: 50px; margin-bottom: 10px" >
+				</a>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="page-content">
+
+
+				<h2 class="h2">항공권 예약 정보</h2><br>
+
+				<!-- 예약 정보 -->
+
+				<table class="table" style="color: darkgray;">
+
+					<thead>
+					<tr>
+						<th scope="col">예약 번호</th>
+						<th scope="col">항목 이름</th>
+						<th scope="col">총 가격</th>
+						<th scope="col">결제 방법</th>
+						<th scope="col">수량</th>
+						<th scope="col">예약 일시</th>
+						<th scope="col">승인 일시</th>
+						<th scope="col"></th>
+					</tr>
+					</thead>
+					<tbody>
+					<!-- 예약 내역 출력하기 -->
+
+					<th:block th:each="reservation : ${reservationList}">
+						<tr>
+							<td th:value="${reservation.id}" th:text="${reservation.id}"></td>
+							<td th:value="${reservation.item_name}" th:text="${reservation.item_name}"></td>
+							<td th:value="${reservation.total_price}" th:text="${reservation.total_price}"></td>
+							<td th:value="${reservation.payment_type}" th:text="${reservation.payment_type}"></td>
+							<td th:value="${reservation.quantity}" th:text="${reservation.quantity}"></td>
+							<td th:value="${reservation.created_at}" th:text="${reservation.created_at}"></td>
+							<td th:value="${reservation.approved_at}" th:text="${reservation.approved_at}"></td>
+							<td>
+								<form th:action="@{/flight/detail}" method="get">
+									<input type="hidden" name="id" th:value="${reservation.id}" />
+									<button name="sumbmit2" type="submit" style="background-color: gray; color: white;">상세보기</button>
+								</form>
+							</td>
+						</tr>
+
+					</th:block>
+					</tbody>
+
+				</table>
+
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

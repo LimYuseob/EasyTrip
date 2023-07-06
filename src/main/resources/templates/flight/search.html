@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Easy Trip</title>
+        <style>
+          body {
+            background-color: white;
+          }
+          form {
+            padding: 20px;
+          }
+          input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+          }
+          input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+          }
+          input[type=submit]:hover {
+            background-color: #45a049;
+          }
+</style>          
+</head>
+<body>
+<a class="active" href="/" style="margin-left: 25px">
+    <img src="../images/logo.jpg" width="200" height="50" style="margin-top: 50px; margin-bottom: 10px" >
+</a>
+<br>
+	<form>
+       <div>
+         <label for="name">이름</label>
+         <input type="text" id="name" name="name" required>
+       </div>
+       <br>
+       <div>
+         <label for="phone">전화번호</label>
+         <input type="text" id="phone" name="phone" placeholder="'-'를 꼭 입력하세요." required>
+       </div>
+       <br>
+       <input class="btn btn-primary" type="submit" value="조회하기" onclick="search()" >
+     </form>
+     <script type="text/javascript">
+	  	// 조회하기 버튼 클릭 시 실행되는 함수
+	     function search() {
+	       // 이름과 여권번호 값을 가져오기
+	       const name = document.getElementById("name").value;
+	       const phone = document.getElementById("phone").value;
+	
+	       // 부모 창 URL 변경
+	       window.opener.location.href = "/flight/reservation?name=" + name + "&phone=" + phone;
+	
+	       // 팝업 창 닫기
+	       window.close();
+	     }
+     </script>
+</body>
+</html>
